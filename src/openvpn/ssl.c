@@ -68,7 +68,7 @@
 
 #ifdef MEASURE_TLS_HANDSHAKE_STATS
 
-static int tls_handshake_success; /* GLOBAL */
+      static int tls_handshake_success; /* GLOBAL */
 static int tls_handshake_error;   /* GLOBAL */
 static int tls_packets_generated; /* GLOBAL */
 static int tls_packets_sent;      /* GLOBAL */
@@ -81,11 +81,11 @@ static int tls_packets_sent;      /* GLOBAL */
 void
 show_tls_performance_stats(void)
 {
-    msg(D_TLS_DEBUG_LOW, "TLS Handshakes, success=%f%% (good=%d, bad=%d), retransmits=%f%%",
+    msg(  D_TLS_DEBUG_LOW, "TLS Handshakes, success=%f%% (good=%d, bad=%d), retransmits=%f%%",
         (double) tls_handshake_success / (tls_handshake_success + tls_handshake_error) * 100.0,
         tls_handshake_success, tls_handshake_error,
         (double) (tls_packets_sent - tls_packets_generated) / tls_packets_generated * 100.0);
-}
+   }
 #else  /* ifdef MEASURE_TLS_HANDSHAKE_STATS */
 
 #define INCR_SENT
