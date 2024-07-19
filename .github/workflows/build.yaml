@@ -102,7 +102,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-20.04, ubuntu-22.04]
+        os: [ubuntu-20.04, ubuntu-22.04, ubuntu-24.04]
         sslpkg: [libmbedtls-dev]
         ssllib: [mbedtls]
         libname: [mbed TLS]
@@ -116,6 +116,12 @@ jobs:
             sslpkg: "libssl-dev"
             libname: OpenSSL 3.0.2
             ssllib: openssl
+          - os: ubuntu-24.04
+            sslpkg: "libssl-dev"
+            libname: OpenSSL 3.0.13
+            ssllib: openssl
+            pkcs11pkg: "libpkcs11-helper1-dev softhsm2 gnutls-bin"
+            extraconf: --enable-pkcs11
           - os: ubuntu-20.04
             sslpkg: "libssl-dev"
             libname: OpenSSL 1.1.1
@@ -165,7 +171,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-20.04]
+        os: [ubuntu-20.04, ubuntu-22.04, ubuntu-24.04]
         ssllib: [mbedtls, openssl]
 
     name: "clang-asan - ${{matrix.os}} - ${{matrix.ssllib}}"
